@@ -4,5 +4,9 @@ var Unit = {
 	},
 	shoot: function(){
 
-	}
+	},
+	unitColors: [
+		{blue:"blue",active:0},
+		{red:"red",active:0}
+	]
 }

@@ -1,14 +1,31 @@
-var game = {
+var Game = {
     stage: new createjs.Stage("warlock"),
+
+    init: function(){
+        Preloader.load()
+    },
+
+    setup:function(){
+        Game.stage.removeAllChildren();
+        Ticker.start();
+        Game.levelData = Preloader.queue.getResult('levelJson');
+
+        //Load sprite data
+        Game.bgtiles = new createjs.SpriteSheet(Preloader.queue.getResult('bgtiles'));
+        Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
+        Game.heroTopDownSheet.framerate = 5;
+        //Game.startGame();
+        Game.createCircle();
+    },
 
     createCircle: function(){
         var circle = new createjs.Shape();
         circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
         circle.x = 100;
         circle.y = 100;
-        game.stage.addChild(circle);
+        Game.stage.addChild(circle);
 
-        game.stage.update();
+        Game.stage.update();
     }
 }
 
@@ -21,5 +38,3 @@ window.addEventListener("gamepadconnected", function(e) {
 var arrayGP = navigator.getGamepads();
 
 console.log(arrayGP);
-
-game.createCircle();
