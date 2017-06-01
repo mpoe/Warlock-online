@@ -24,11 +24,11 @@ var Preloader ={
 		this.queue.installPlugin(createjs.Sound)
 
 		this.queue.on("progress", this.progress, this);
-		this.queue.on("complete", Game.setup(), Game);
+		this.queue.on("complete", Game.setup, Game);
 
 		this.queue.loadManifest([
 			//JS
-			"js/calc.js","js/game.js","js/ticker.js","js/unit.js","js/createjs.js","js/controller.js"
+			"js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js"
 		])
 	},
 	progress:function(e){

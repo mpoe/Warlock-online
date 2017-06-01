@@ -7,21 +7,22 @@ var Game = {
 
     init: function(){
         Preloader.load()
+
     },
 
     setup:function(){
         Game.stage.removeAllChildren();
-        console.log(Ticker);
-        Ticker.start();
-        Game.levelData = Preloader.queue.getResult('levelJson');
-
-        //Load sprite data
-        Game.bgtiles = new createjs.SpriteSheet(Preloader.queue.getResult('bgtiles'));
-        Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
-        Game.heroTopDownSheet.framerate = 5;
-        //Game.startGame();
-        console.log("x setup");
         Game.createCircle();
+        Ticker.start();
+        //Game.levelData = Preloader.queue.getResult('levelJson');
+        //
+        ////Load sprite data
+        //Game.bgtiles = new createjs.SpriteSheet(Preloader.queue.getResult('bgtiles'));
+        //Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
+        //Game.heroTopDownSheet.framerate = 5;
+        ////Game.startGame();
+        //console.log("x setup");
+        //Game.createCircle();
     },
 
     createCircle: function(){
@@ -34,8 +35,6 @@ var Game = {
         Game.stage.update();
     },
     checkInput: function(){
-        Controller.checkControllers();
+        Controller.checkInput();
     }
 }
-
-Game.createCircle();
