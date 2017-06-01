@@ -2,7 +2,7 @@
  * Created by Mpoe on 31-05-2017.
  */
 var Preloader ={
-	queue: new createjs.LoadQueue(false),
+	queue: new createjs.LoadQueue(true),
 	loadText: new createjs.Text("", "50px Courier New", "#000"),
 	loaderBar:new createjs.Container(),
 	bar:new createjs.Shape(),
@@ -24,11 +24,11 @@ var Preloader ={
 		this.queue.installPlugin(createjs.Sound)
 
 		this.queue.on("progress", this.progress, this);
-		this.queue.on("complete", Game.setup, Game);
+		this.queue.on("complete", Game.setup(), Game);
 
 		this.queue.loadManifest([
 			//JS
-			"js/calc.js","js/game.js","js/ticker.js","js/unit.js","js/createjs.js"
+			"js/calc.js","js/game.js","js/ticker.js","js/unit.js","js/createjs.js","js/controller.js"
 		])
 	},
 	progress:function(e){

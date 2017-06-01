@@ -1,5 +1,9 @@
 var Game = {
     stage: new createjs.Stage("warlock"),
+    unitColors: [
+        {blue:"blue",active:0},
+        {red:"red",active:0}
+    ],
 
     init: function(){
         Preloader.load()
@@ -7,6 +11,7 @@ var Game = {
 
     setup:function(){
         Game.stage.removeAllChildren();
+        console.log(Ticker);
         Ticker.start();
         Game.levelData = Preloader.queue.getResult('levelJson');
 
@@ -15,6 +20,7 @@ var Game = {
         Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
         Game.heroTopDownSheet.framerate = 5;
         //Game.startGame();
+        console.log("x setup");
         Game.createCircle();
     },
 
@@ -26,15 +32,10 @@ var Game = {
         Game.stage.addChild(circle);
 
         Game.stage.update();
+    },
+    checkInput: function(){
+        Controller.checkControllers();
     }
 }
 
-window.addEventListener("gamepadconnected", function(e) {
-    console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
-        e.gamepad.index, e.gamepad.id,
-        e.gamepad.buttons.length, e.gamepad.axes.length);
-});
-
-var arrayGP = navigator.getGamepads();
-
-console.log(arrayGP);
+Game.createCircle();
