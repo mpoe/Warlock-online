@@ -5,6 +5,8 @@ var Controller = {
     hasGP: false,
 
     checkInput: function(){
+        //Der kan være op til 4 gamepads på en gang
+        // console.log(navigator.getGamepads())
         if(navigator.getGamepads()[0] == null){
             console.log("No controller")
         }else{
@@ -16,6 +18,9 @@ var Controller = {
                         console.log("You pressed a specific button")
                     }
                 }
+            // gp har 4 aksler
+            // 0,1 x,y
+            // 2,3 x,y
             }
         }
 
