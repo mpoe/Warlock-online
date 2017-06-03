@@ -4,6 +4,7 @@ var Game = {
         {blue:"blue",active:0},
         {red:"red",active:0}
     ],
+    units: [],
 
     init: function(){
         Preloader.load()

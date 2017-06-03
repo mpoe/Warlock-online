@@ -28,7 +28,7 @@ var Preloader ={
 
 		this.queue.loadManifest([
 			//JS
-			"js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js"
+			"js/Scenes.js","js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js"
 		])
 	},
 	progress:function(e){
