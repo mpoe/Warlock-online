@@ -1,12 +1,13 @@
 var Unit = {
+	index: null,
+	color: null,
 	move: function(){
 
 	},
 	shoot: function(){
 
 	},
-	unitColors: [
-		{blue:"blue",active:0},
-		{red:"red",active:0}
-	]
+	checkInput: function(){
+		Controller.checkInput(this);
+	}
 }

@@ -1,21 +1,29 @@
 var Game = {
     stage: new createjs.Stage("warlock"),
+    unitColors: [
+        {blue:"blue",active:0},
+        {red:"red",active:0}
+    ],
+    units: [],
 
     init: function(){
         Preloader.load()
+
     },
 
     setup:function(){
         Game.stage.removeAllChildren();
-        Ticker.start();
-        Game.levelData = Preloader.queue.getResult('levelJson');
-
-        //Load sprite data
-        Game.bgtiles = new createjs.SpriteSheet(Preloader.queue.getResult('bgtiles'));
-        Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
-        Game.heroTopDownSheet.framerate = 5;
-        //Game.startGame();
         Game.createCircle();
+        Ticker.start();
+        //Game.levelData = Preloader.queue.getResult('levelJson');
+        //
+        ////Load sprite data
+        //Game.bgtiles = new createjs.SpriteSheet(Preloader.queue.getResult('bgtiles'));
+        //Game.heroTopDownSheet = new createjs.SpriteSheet(Preloader.queue.getResult('herosheet'))
+        //Game.heroTopDownSheet.framerate = 5;
+        ////Game.startGame();
+        //console.log("x setup");
+        //Game.createCircle();
     },
 
     createCircle: function(){
@@ -26,15 +34,8 @@ var Game = {
         Game.stage.addChild(circle);
 
         Game.stage.update();
+    },
+    checkInput: function(){
+        Controller.checkInput();
     }
 }
-
-window.addEventListener("gamepadconnected", function(e) {
-    console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
-        e.gamepad.index, e.gamepad.id,
-        e.gamepad.buttons.length, e.gamepad.axes.length);
-});
-
-var arrayGP = navigator.getGamepads();
-
-console.log(arrayGP);

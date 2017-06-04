@@ -1,6 +1,3 @@
-/**
- * Created by Mpoe on 31-05-2017.
- */
 /*!
  * @license CreateJS
  * Visit http://createjs.com/ for documentation, updates and examples.
