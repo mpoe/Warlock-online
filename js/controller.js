@@ -17,8 +17,10 @@ var Controller = {
             }
         }
     },
+    checkInput: function(e){
 
-    checkInput: function(unit){
+    },
+    checkGameInput: function(unit){
         //Der kan være op til 4 gamepads på en gang
         // console.log(navigator.getGamepads())
 

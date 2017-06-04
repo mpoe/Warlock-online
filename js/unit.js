@@ -1,5 +1,5 @@
 var Unit = {
-	index: null,
+	gamepadID: null,
 	color: null,
 	move: function(){
 

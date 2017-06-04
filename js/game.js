@@ -1,20 +1,22 @@
 var Game = {
     stage: new createjs.Stage("warlock"),
-    unitColors: [
-        {blue:"blue",active:0},
-        {red:"red",active:0}
-    ],
     units: [],
-
+    players: 0,
+    currentRound:0, //increments on game start
+    maxRounds:10, // maybe allow user to choose
+    background:"",
     init: function(){
         Preloader.load()
 
     },
 
     setup:function(){
+        Game.background = new createjs.Bitmap(Preloader.queue.getResult("img/backgrounds/bg1.jpg"));
         Game.stage.removeAllChildren();
-        Game.createCircle();
-        Ticker.start();
+        //Scenes.startMenu();
+        Game.stage.addChild(Game.background);
+        Scenes.startMenu();
+        Game.stage.update();
         //Game.levelData = Preloader.queue.getResult('levelJson');
         //
         ////Load sprite data
@@ -25,7 +27,10 @@ var Game = {
         //console.log("x setup");
         //Game.createCircle();
     },
+    startGame: function(){
+        Ticker.start();
 
+    },
     createCircle: function(){
         var circle = new createjs.Shape();
         circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 50);
@@ -34,8 +39,5 @@ var Game = {
         Game.stage.addChild(circle);
 
         Game.stage.update();
-    },
-    checkInput: function(){
-        Controller.checkInput();
     }
 }

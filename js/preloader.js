@@ -27,8 +27,13 @@ var Preloader ={
 		this.queue.on("complete", Game.setup, Game);
 
 		this.queue.loadManifest([
+			//IMG - BUTTONS
+			"img/buttons/2-players.jpg","img/buttons/3-players.jpg","img/buttons/4-players.jpg","img/buttons/how-to-play.jpg",
+			//IMG - BACKGROUNDS
+			"img/backgrounds/bg1.jpg",
 			//JS
-			"js/Scenes.js","js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js"
+			"js/Scenes.js","js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js",
+
 		])
 	},
 	progress:function(e){
