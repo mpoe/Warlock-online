@@ -1,10 +1,14 @@
 var Unit = {
-	constructor: function(gid, color){
-		this.gamepadID =gid;
-		this.color = color;
+	createUnit: function(gid, color,x,y){
+		var unit = new createjs.Shape();
+		unit.graphics.beginFill(color).drawCircle(0, 0, 50);
+		unit.x = x;
+		unit.y = y;
+		unit.gamepadID = gid;
+		//Game.stage.addChild(unit);
+		return unit;
+
 	},
-	gamepadID: null,
-	color: null,
 	move: function(){
 
 	},
@@ -13,8 +17,5 @@ var Unit = {
 	},
 	checkGameInput: function(){
 		Controller.checkGameInput(this.gamepadID);
-	},
-	checkInput: function(){
-		Controller.checkInput();
 	}
 }

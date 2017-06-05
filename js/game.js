@@ -6,6 +6,7 @@ var Game = {
     currentRound:0, //increments on game start
     maxRounds:10, // maybe allow user to choose
     background:"",
+    gameStarted: false,
     init: function(){
         Preloader.load()
 
@@ -18,6 +19,11 @@ var Game = {
         Game.stage.addChild(Game.background);
         Scenes.startMenu();
         Game.stage.update();
+
+        //Game.units.push(Unit.createUnit("Xbox 360 Controller (XInput STANDARD GAMEPAD)","blue",100,100));
+        //Game.units.push("2");
+        //console.log(Game.units);
+        //console.log(Game.units.length);
         Ticker.start();
         //Game.levelData = Preloader.queue.getResult('levelJson');
         //
@@ -30,7 +36,6 @@ var Game = {
         //Game.createCircle();
     },
     startGame: function(){
-        Ticker.start();
         alert("Game started");
     },
     createCircle: function(){
