@@ -1,6 +1,7 @@
 var Game = {
     stage: new createjs.Stage("warlock"),
     units: [],
+    colors:["blue","red"],
     players: 0,
     currentRound:0, //increments on game start
     maxRounds:10, // maybe allow user to choose
@@ -17,6 +18,7 @@ var Game = {
         Game.stage.addChild(Game.background);
         Scenes.startMenu();
         Game.stage.update();
+        Ticker.start();
         //Game.levelData = Preloader.queue.getResult('levelJson');
         //
         ////Load sprite data
@@ -29,7 +31,7 @@ var Game = {
     },
     startGame: function(){
         Ticker.start();
-
+        alert("Game started");
     },
     createCircle: function(){
         var circle = new createjs.Shape();

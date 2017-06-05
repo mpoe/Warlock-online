@@ -3,7 +3,8 @@ var Ticker ={
         createjs.Ticker.setFPS(60);
         createjs.Ticker.on("tick", function(e){
             Game.stage.update(e);
-            Controller.checkInput();
+            Unit.checkInput();
+            Controller.checkGameInput();
         });
     }
 }

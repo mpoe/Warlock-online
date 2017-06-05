@@ -1,4 +1,8 @@
 var Unit = {
+	constructor: function(gid, color){
+		this.gamepadID =gid;
+		this.color = color;
+	},
 	gamepadID: null,
 	color: null,
 	move: function(){
@@ -7,7 +11,10 @@ var Unit = {
 	shoot: function(){
 
 	},
+	checkGameInput: function(){
+		Controller.checkGameInput(this.gamepadID);
+	},
 	checkInput: function(){
-		Controller.checkInput(this);
+		Controller.checkInput();
 	}
 }
