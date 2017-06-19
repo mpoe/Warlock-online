@@ -2,8 +2,8 @@
  * Created by Mpoe on 03-06-2017.
  */
 var Scenes ={
-    iCounter:0,
-    startMenu: function(){
+    //iCounter:0
+    /*startMenu: function(){
         var btn = new createjs.Bitmap(Preloader.queue.getResult("img/buttons/2-players.jpg"));
         btn.x = 250;
         btn.y = 350;
@@ -35,8 +35,8 @@ var Scenes ={
             alert("Not yet!");
         });
         Game.stage.addChild(btn);
-    },
-    playerMenu: function(iPlayers){
+    },*/
+    /*playerMenu: function(iPlayers){
         Game.stage.clear();
         Game.stage.addChild(Game.background);
 
@@ -54,5 +54,5 @@ var Scenes ={
             Game.stage.addChild(text);
             Game.stage.update();
         }
-    }
+    }*/
 }

@@ -17,10 +17,9 @@ var Controller = {
 
                     if(gp.buttons[i].pressed){
                         Game.units.push(Unit.createUnit(gp.id,"blue",100,100))
-                        if(Game.units.length==1){
-                            Game.startGame();
-                        }
+                        Game.createCircle("blue", gp.id, Game.units.length);
                     }
+
                     // gp har 4 aksler
                     // 0,1 x,y
                     // 2,3 x,y
@@ -37,7 +36,6 @@ var Controller = {
         if(navigator.getGamepads()[0] == null){
             console.log("No controller")
         }else{
-            //for(var j = 0; j<Game.units.length;j++){
             var gp = navigator.getGamepads()[0];
             for(var i = 0; i<gp.buttons.length; i++){
                 //console.log(gp.buttons[15]);
@@ -47,6 +45,19 @@ var Controller = {
                     if(i == 0){
                         console.log("mama mia")
                     }
+                }
+
+                if(gp.axes[0]>0.25 || gp.axes[1]>0.25 || gp.axes[0]<-0.25 || gp.axes[1]<-0.25){
+                    var x =0;
+                    var y = 0;
+                    if(gp.axes[0]>0.25 || gp.axes[0] <-0.25){
+                        x = gp.axes[0];
+                    }
+                    if(gp.axes[1]>0.25 || gp.axes[1] <-0.25){
+                        y = gp.axes[1];
+                    }
+                    //console.log("x:"+ x + " y:" + y);
+                    Unit.move(gp.id,x,y);
                 }
                 // gp har 4 aksler
                 // 0,1 x,y

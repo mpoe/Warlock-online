@@ -9,7 +9,13 @@ var Unit = {
 		return unit;
 
 	},
-	move: function(){
+	move: function(unitid,x,y){
+		for( var i = 0; i<Game.units.length;i++){
+			if(unitid == Game.units[i].gamepadID){
+				Game.units[i].unit.x+=x;
+				Game.units[i].unit.y+=y;
+			}
+		}
 
 	},
 	shoot: function(){
