@@ -21,16 +21,6 @@ var Game = {
         Ticker.start();
     },
     startGame: function(){
-        // TBD
-    },
-    createCircle: function(color, controller, length) {
-        var circle = new createjs.Shape();
-        circle.graphics.beginFill(color).drawCircle(0, 0, 50);
-        circle.x = 100;
-        circle.y = 100;
-        Game.stage.addChild(circle);
-        circle.controller = controller;
-        Game.units[length-1].unit = circle;
-        Game.stage.update();
+        Game.gameStarted = true;
     }
 }

@@ -31,8 +31,11 @@ var Preloader ={
 			"img/buttons/2-players.jpg","img/buttons/3-players.jpg","img/buttons/4-players.jpg","img/buttons/how-to-play.jpg",
 			//IMG - BACKGROUNDS
 			"img/backgrounds/bg1.jpg",
+
+			//IMG - RETICLE(S)
+			"img/reticle.png",
 			//JS
-			"js/Scenes.js","js/Calc.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js",
+			"js/Scenes.js","js/Util.js","js/Game.js","js/Ticker.js","js/Unit.js","js/createjs.js","js/Controller.js",
 
 		])
 	},
