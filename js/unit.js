@@ -79,12 +79,6 @@ var Unit = {
 				projectile.directionX = Math.cos(radians);
 				projectile.directionY = Math.sin(radians);
 
-				console.log("radians: "+ radians);
-
-				console.log("DirX: "+ projectile.directionX);
-
-				console.log("DirY: "+ projectile.directionY);
-
 				projectile.owner = unit.gamepadID;
 				Game.projectiles.push(projectile);
 				Game.stage.addChild(projectile);

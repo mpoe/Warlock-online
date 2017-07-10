@@ -24,7 +24,6 @@ var Util = {
         return Math.sqrt( a*a + b*b );
     },
     getPointOnCircle:function(centerX,centerY,radius,radians){
-        console.log(centerX+" "+centerY+" "+radius+" "+radians);
         var x = centerX + radius * Math.cos(radians);
         var y = centerY + radius * Math.sin(radians);
         return [x,y];

@@ -8,8 +8,6 @@ var Ticker ={
             if(Game.gameStarted){
                 Controller.checkGameInput();
 
-
-
                 for(var i = 0; i<Game.projectiles.length;i++){
                     var projectile = Game.projectiles[i];
                     projectile.x += projectile.directionX*5;

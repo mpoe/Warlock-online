@@ -16,23 +16,19 @@
             overflow: hidden;
         }
         canvas{
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
     <canvas id="warlock" width="1920" height="1080"></canvas>
 
-    <div id="gamepadPrompt"></div>
-    <div id="gamepadDisplay"></div>
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/Preloader.js"></script>
-    <!--
-        <script src="js/Ticker.js"></script>
-    -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         Game.init();
     </script>
