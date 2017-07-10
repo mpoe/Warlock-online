@@ -7,6 +7,7 @@ var Game = {
     maxRounds:10, // maybe allow user to choose
     background:"",
     gameStarted: false,
+    projectiles: [],
     init: function(){
         Preloader.load()
     },

@@ -7,6 +7,21 @@ var Ticker ={
             navigator.getGamepads();
             if(Game.gameStarted){
                 Controller.checkGameInput();
+
+
+
+                for(var i = 0; i<Game.projectiles.length;i++){
+                    var projectile = Game.projectiles[i];
+                    projectile.x += projectile.directionX*5;
+                    projectile.y += projectile.directionY*5;
+                    projectile.traveled += (projectile.directionY + projectile.directionX)*5;
+                    if(projectile.traveled > projectile.range){
+                        Game.stage.removeChild(projectile);
+                        Game.projectiles.splice(i,1);
+                    }
+                }
+
+
             }else{
                 Controller.checkInput();
             }

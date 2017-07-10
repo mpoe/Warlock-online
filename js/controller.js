@@ -33,7 +33,7 @@ var Controller = {
 
 
         for( var p = 0; p < Game.units.length;p++){
-
+            var unit = Game.units[p];
             var gp = navigator.getGamepads()[p];
             for(var i = 0; i<gp.buttons.length; i++){
                 //console.log(gp.buttons[15]);
@@ -42,6 +42,9 @@ var Controller = {
                     console.log(i);
                     if(i == 0){
                         console.log("mama mia")
+                    }
+                    if(i == 7){
+                        Unit.shoot(unit.gamepadID,unit.direction);
                     }
                 }
 

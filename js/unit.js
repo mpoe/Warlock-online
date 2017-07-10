@@ -8,6 +8,7 @@ var Unit = {
 		unit.y = y;
 		unit.gamepadID = gid;
 		unit.color = color;
+		unit.direction =0;
 
 		Game.stage.addChild(unit);
 
@@ -39,7 +40,7 @@ var Unit = {
 			if(unitid == Game.units[i].gamepadID){
 				Game.units[i].x+=x;
 				Game.units[i].y+=y;
-				Unit.reticleFollow(Game.units[i].gamepadID,x,y);
+				Unit.reticleFollow(i,x,y);
 			}
 		}
 
@@ -48,42 +49,47 @@ var Unit = {
 		for( var i = 0; i<Game.units.length;i++){
 			if(unitid == Game.units[i].gamepadID){
 				var unit = Game.units[i]
-				var distance = Util.getDistance(unit.x,unit.y,unit.reticle.x,unit.reticle.y);
-				if(distance > 150 || distance <-150){
-					console.log("too far away");
-				}else{
-					//unit.reticle.x+=x;
-					//unit.reticle.y+=y;
+				//var distance = Util.getDistance(unit.x,unit.y,unit.reticle.x,unit.reticle.y);
+				var radians = Util.getRadians(0,0,x,y);
 
-					var radians = Util.getRadians(0,0,x,y);
+				var aCoords = Util.getPointOnCircle(unit.x,unit.y,Unit.unitRadius*2,radians)
 
-					//console.log(Util.getPointOnCircle(unit.x,unit.y,Unit.unitRadius,unit.reticle.x,unit.reticle.y));
-					var aCoords = Util.getPointOnCircle(unit.x,unit.y,Unit.unitRadius*2,radians)
+				unit.reticle.x=aCoords[0];
+				unit.reticle.y=aCoords[1];
 
-					unit.reticle.x=aCoords[0];
-					unit.reticle.y=aCoords[1];
-
-
-
-
-				}
-
-
-
+				unit.direction = radians;
 			}
 		}
 	},
-	reticleFollow: function(unitid,x,y){
-		for( var i = 0; i<Game.units.length;i++){
-			if(unitid == Game.units[i].gamepadID){
+	reticleFollow: function(index,x,y){
+		var unit = Game.units[index]
+		unit.reticle.x+=x;
+		unit.reticle.y+=y;
+	},
+	shoot: function(unitid,radians){
+		for( var i = 0; i<Game.units.length;i++) {
+			if (unitid == Game.units[i].gamepadID) {
 				var unit = Game.units[i]
-				unit.reticle.x+=x;
-				unit.reticle.y+=y;
+				var projectile = new createjs.Shape();
+				projectile.graphics.beginFill("red").drawCircle(0, 0, 10);
+				projectile.x = unit.x;
+				projectile.y = unit.y;
+				projectile.range = 1000;
+				projectile.traveled = 0;
+				projectile.directionX = Math.cos(radians);
+				projectile.directionY = Math.sin(radians);
+
+				console.log("radians: "+ radians);
+
+				console.log("DirX: "+ projectile.directionX);
+
+				console.log("DirY: "+ projectile.directionY);
+
+				projectile.owner = unit.gamepadID;
+				Game.projectiles.push(projectile);
+				Game.stage.addChild(projectile);
 			}
 		}
-	},
-	shoot: function(){
-
 	},
 	checkGameInput: function(){
 		Controller.checkGameInput(this.gamepadID);
