@@ -21,21 +21,37 @@ var Ticker ={
 
                 for(var i = 0; i<Game.units.length;i++){
                     var unit = Game.units[i];
+
+
+                    //Zoom out logic
                     if(
-                        Game.zoom < 1 &&
+                        Game.zoom > 1 &&
                             (
-                            Game.dimensions.width * Game.zoom - unit.x <= 80 // zoom in rightside
+                            Game.stageSize.rightX - unit.x <= 80 // zoom in rightside
                                 ||
-                            unit.x <= 80 // zoom in leftside
+                            unit.x - Game.stageSize.leftX  <= 80 // zoom in leftside
                                  ||
-                            Game.dimensions.height * Game.zoom - unit.y <= 45 //zoom in bottomside
+                            Game.stageSize.botY - unit.y <= 45 //zoom in bottomside
                                 ||
-                            unit.y <= 45 //zoom in topside
+                            unit.y - Game.stageSize.topY <= 45 //zoom in topside
                             )
                     ){
-                        Game.zoom+=0.05;
+                        Game.zoom-=0.05; // Zoom out
                         Util.setScale(Game.zoom);
+                        return;
                     }
+
+                    //Zoom in logic
+
+                    if(
+                        Game.zoom <2 &&
+                            (
+                            Game.stageSize.rightX - unit.x >= Game.stageSize.rightX*1.3
+                                ||
+                            unit.x - Game.stageSize.leftX >= Game.stageSize.leftX * 0.7
+                            )
+                    )
+
                 }
 
 

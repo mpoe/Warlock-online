@@ -4,7 +4,13 @@ var Game = {
         width: $('#warlock').width(),//1920
         height: $('#warlock').height()//1080
     },
-    zoom: 0.9, // Treated as scale
+    stageSize: {
+        leftX: 0,
+        rightX: 0,
+        topY:0,
+        botY: 0
+    },
+    zoom: 1.0, // Treated as scale
     units: [],
     colors:["blue","red"],
     players: 0,
@@ -23,10 +29,19 @@ var Game = {
         //Scenes.startMenu();
         Game.stage.addChild(Game.background);
         Game.stage.update();
+        Game.setStageSize(0,Game.dimensions.width,0,Game.dimensions.height)
 
         Ticker.start();
     },
     startGame: function(){
         Game.gameStarted = true;
+    },
+    setStageSize: function(minX,maxX,minY,maxY){
+        Game.stageSize =  {
+            leftX: minX,
+            rightX: maxX,
+            topY:minY,
+            botY: maxY
+        }
     }
 }
