@@ -1,5 +1,10 @@
 var Game = {
     stage: new createjs.Stage("warlock"),
+    dimensions: {
+        width: $('#warlock').width(),//1920
+        height: $('#warlock').height()//1080
+    },
+    zoom: 0.9, // Treated as scale
     units: [],
     colors:["blue","red"],
     players: 0,

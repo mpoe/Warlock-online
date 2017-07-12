@@ -27,6 +27,9 @@ var Util = {
         var x = centerX + radius * Math.cos(radians);
         var y = centerY + radius * Math.sin(radians);
         return [x,y];
+    },
+    setScale:function(iScale){
+        Game.stage.scaleX = iScale;
+        Game.stage.scaleY = iScale;
     }
-
 }

@@ -1,5 +1,6 @@
 var Unit = {
 	unitRadius: 50,
+	basespeed: 5,
 	createUnit: function(gid, color,x,y){
 		var unit = new createjs.Shape();
 		unit.graphics.beginFill(color).drawCircle(0, 0, Unit.unitRadius);
@@ -9,6 +10,7 @@ var Unit = {
 		unit.gamepadID = gid;
 		unit.color = color;
 		unit.direction =0;
+		unit.speed = Unit.basespeed;
 
 		Game.stage.addChild(unit);
 
@@ -38,9 +40,10 @@ var Unit = {
 	move: function(unitid,x,y){
 		for( var i = 0; i<Game.units.length;i++){
 			if(unitid == Game.units[i].gamepadID){
-				Game.units[i].x+=x;
-				Game.units[i].y+=y;
-				Unit.reticleFollow(i,x,y);
+				var unit = Game.units[i];
+				unit.x+= x * unit.speed;
+				unit.y+= y * unit.speed;
+				Unit.reticleFollow(i,x*unit.speed,y*unit.speed);
 			}
 		}
 

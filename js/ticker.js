@@ -19,6 +19,25 @@ var Ticker ={
                     }
                 }
 
+                for(var i = 0; i<Game.units.length;i++){
+                    var unit = Game.units[i];
+                    if(
+                        Game.zoom < 1 &&
+                            (
+                            Game.dimensions.width * Game.zoom - unit.x <= 80 // zoom in rightside
+                                ||
+                            unit.x <= 80 // zoom in leftside
+                                 ||
+                            Game.dimensions.height * Game.zoom - unit.y <= 45 //zoom in bottomside
+                                ||
+                            unit.y <= 45 //zoom in topside
+                            )
+                    ){
+                        Game.zoom+=0.05;
+                        Util.setScale(Game.zoom);
+                    }
+                }
+
 
             }else{
                 Controller.checkInput();
