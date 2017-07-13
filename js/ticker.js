@@ -45,7 +45,7 @@ var Ticker ={
                     //Zoom in logic
 
                     if(
-                        Game.zoom <=2 &&
+                        Game.zoom <=5 &&
                             (
                             Game.stageSize.rightX - unit.x >= (Game.stageSize.rightX - Game.stageSize.leftX) *0.3
                                 ||

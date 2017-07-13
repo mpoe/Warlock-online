@@ -29,7 +29,23 @@ var Util = {
         return [x,y];
     },
     setScale:function(iScale){
+        Game.zoom = iScale;
         Game.stage.scaleX = iScale;
         Game.stage.scaleY = iScale;
+
+        var rightX = Game.dimensions.width - ((Game.dimensions.width * Game.zoom) - Game.dimensions.width)/2;
+        var leftX = ((Game.dimensions.width * Game.zoom) - Game.dimensions.width)/2;
+        var botY = Game.dimensions.height - ((Game.dimensions.height * Game.zoom) - Game.dimensions.height)/2;
+        var topY = ((Game.dimensions.height * Game.zoom) - Game.dimensions.height)/2;
+
+        Game.background.x = -leftX;
+        Game.background.y = -topY;
+
+        Game.stageSize.rightX = rightX;
+        Game.stageSize.leftX = leftX;
+
+        Game.stageSize.botY = botY;
+        Game.stageSize.topY = topY;
+
     }
 }
