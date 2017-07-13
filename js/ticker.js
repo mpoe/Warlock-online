@@ -25,7 +25,7 @@ var Ticker ={
 
                     //Zoom out logic
                     if(
-                        Game.zoom > 1 &&
+                        Game.zoom >= 1 &&
                             (
                             Game.stageSize.rightX - unit.x <= 80 // zoom in rightside
                                 ||
@@ -36,21 +36,30 @@ var Ticker ={
                             unit.y - Game.stageSize.topY <= 45 //zoom in topside
                             )
                     ){
-                        Game.zoom-=0.05; // Zoom out
-                        Util.setScale(Game.zoom);
-                        return;
+                        if(Game.zoom>1){
+                            Game.zoom-=0.05; // Zoom out
+                            Util.setScale(Game.zoom);
+                        }
                     }
 
                     //Zoom in logic
 
                     if(
-                        Game.zoom <2 &&
+                        Game.zoom <=2 &&
                             (
-                            Game.stageSize.rightX - unit.x >= Game.stageSize.rightX*1.3
+                            Game.stageSize.rightX - unit.x >= (Game.stageSize.rightX - Game.stageSize.leftX) *0.3
                                 ||
-                            unit.x - Game.stageSize.leftX >= Game.stageSize.leftX * 0.7
+                            unit.x - Game.stageSize.leftX >= (Game.stageSize.rightX - Game.stageSize.leftX) *0.3
+                                ||
+                            Game.stageSize.topY - unit.y >= Game.stage.topY*0.7
+                                ||
+                            unit.y - Game.stageSize.botY >= Game.stage.botY + 80*2.3
                             )
-                    )
+                    ){
+                        console.log("Here")
+                        Game.zoom+=0.05; // Zoom in
+                        Util.setScale(Game.zoom);
+                    }
 
                 }
 
